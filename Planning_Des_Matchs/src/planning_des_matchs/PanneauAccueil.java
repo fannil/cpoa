@@ -76,15 +76,15 @@ public class PanneauAccueil extends javax.swing.JPanel {
                 this.fenetre.changerPanneau(panneau);
             }
             if (selectedItem == "Modifier"){
-                JPanel panneau = new PanneauModifier();
+                JPanel panneau = new PanneauModifier(fenetre);
                 this.fenetre.changerPanneau(panneau);
             }
             if (selectedItem == "Déplacer"){
-                JPanel panneau = new PanneauDéplacer();
+                JPanel panneau = new PanneauDéplacer(fenetre);
                 this.fenetre.changerPanneau(panneau);
             }
             if (selectedItem == "Supprimer"){
-                JPanel panneau = new PanneauSupprimer();
+                JPanel panneau = new PanneauSupprimer(fenetre);
                 this.fenetre.changerPanneau(panneau);
             }
         }

@@ -84,7 +84,11 @@ public class PanneauInserer5 extends javax.swing.JPanel {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+        Object source = evt.getSource();
+        if (source.equals(this.jButton1)) {
+            JPanel panneau = new PanneauInserer4(fenetre);
+            this.fenetre.changerPanneau(panneau);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

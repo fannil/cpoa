@@ -1,5 +1,6 @@
 package planning_des_matchs;
 
+import javax.swing.JButton;
 import javax.swing.JPanel;
 
 public class PanneauInserer2 extends javax.swing.JPanel {
@@ -123,7 +124,10 @@ public class PanneauInserer2 extends javax.swing.JPanel {
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        
+        Object source = evt.getSource();
+        if (source.equals(this.jButton1)) {
+            this.fenetre.retourAccueil();
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -133,11 +137,11 @@ public class PanneauInserer2 extends javax.swing.JPanel {
             this.fenetre.changerPanneau(panneau);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
+    javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
