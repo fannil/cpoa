@@ -5,16 +5,28 @@ import javax.swing.JButton;
 import javax.swing.SwingUtilities;
 import javax.swing.JCheckBox;
 import java.awt.Component;
+import java.sql.Connection;
 import javax.swing.*;
+import java.util.List;
+import javax.sql.DataSource;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import planning.metier.Match;
+import planning.dao.oracle.*;
 import javax.swing.table.DefaultTableModel;
+import planning.dao.IArbitreDAO;
+import planning.metier.Arbitre;
 
 public class PanneauInserer3 extends javax.swing.JPanel {
     private final FenetreProjet fenetre;
+    private static List<Arbitre> listeArbitreLigne;
+    private static IArbitreDAO ArbitreDAO;
+    private static DataSource dataSourceDAO;
+    private static Connection connexionBD;
     //PanneauInserer2 panneau2 = new PanneauInserer2(fenetre);
     
     public PanneauInserer3(FenetreProjet fenetre) {
+        listeArbitreLigne = ArbitreDAO.getArbitreLigne();
         this.fenetre = fenetre;
         initComponents();
     }
@@ -25,50 +37,16 @@ public class PanneauInserer3 extends javax.swing.JPanel {
 
         jCheckBox1 = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
 
         jCheckBox1.setText("jCheckBox1");
 
         setPreferredSize(new java.awt.Dimension(400, 300));
 
         jLabel1.setText("Désignation des arbitre de ligne");
-
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null}
-            },
-            new String [] {
-                "Nom", "ID", "Catégorie", "Choix"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
-        jTable1.setName(""); // NOI18N
-        jTable1.setUpdateSelectionOnSort(false);
-        jTable1.setVerifyInputWhenFocusTarget(false);
-        jTable1.addInputMethodListener(new java.awt.event.InputMethodListener() {
-            public void caretPositionChanged(java.awt.event.InputMethodEvent evt) {
-            }
-            public void inputMethodTextChanged(java.awt.event.InputMethodEvent evt) {
-                jTable1InputMethodTextChanged(evt);
-            }
-        });
-        jScrollPane1.setViewportView(jTable1);
-        if (jTable1.getColumnModel().getColumnCount() > 0) {
-            jTable1.getColumnModel().getColumn(0).setResizable(false);
-        }
-        jTable1.getAccessibleContext().setAccessibleName("jTable1");
-        jTable1.getAccessibleContext().setAccessibleDescription("jTable1");
 
         jButton1.setText("Précédent");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -91,14 +69,12 @@ public class PanneauInserer3 extends javax.swing.JPanel {
             }
         });
 
+        jTextField1.setText("jTextField1");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 375, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(89, 89, 89))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -111,17 +87,20 @@ public class PanneauInserer3 extends javax.swing.JPanel {
                         .addComponent(jButton2))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(159, 159, 159)
-                        .addComponent(jButton3)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jButton3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(50, 50, 50)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(67, 67, 67)
+                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106)
                 .addComponent(jButton3)
                 .addGap(16, 16, 16)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -146,14 +125,20 @@ public class PanneauInserer3 extends javax.swing.JPanel {
             this.fenetre.changerPanneau(panneau);
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-    JTable table = new JTable();
+    //JTable table = new JTable();
+    /*OracleArbitreDAO oracle = new OracleArbitreDAO();
+    listeArbitreLigne = oracle.getArbitreLigne();
+    int nbrarbitre = listeArbitreLigne.size();*/
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         Object source = evt.getSource();
         if (source.equals(jButton3)){
-            System.out.println("ca marche je crois");
+            //System.out.println("ca marche je crois");
             //DefaultTableModel model = new DefaultTableModel(0,0);
             //jTable1.setModel(new Object[][]{"nom",1,"categorie",null}, String[]);
             //model.addRow(new Object[]{"nom",1,"categorie",null});
+            /*
+            TEST 1
+            
             String nom = "Nil", categorie = "lol";
             int id = 2;
             JCheckBox choix = new JCheckBox();
@@ -164,8 +149,10 @@ public class PanneauInserer3 extends javax.swing.JPanel {
             for (int count = 1; count <= 10; count++) {
                  model.addRow(new Object[]{ nom,id,categorie,choix});
             }
+            */
             
-            //new test
+            //TEST 2
+            
             /*Object[] columnNames = {"Type", "Company", "Shares", "Price", "Boolean"};
             Object[][] data = {
                 {"Buy", "IBM", new Integer(1000), new Double(80.50), false},
@@ -196,28 +183,42 @@ public class PanneauInserer3 extends javax.swing.JPanel {
             JScrollPane scrollPane = new JScrollPane(table);
             //PanneauInserer3.add(scrollPane);
             fenetre.pack();*/
+            
+            //TEST 3 liste de checkbox
+            /*
+            JCheckBox comboarbitre = new JCheckBox();
+            comboarbitre.setSelected(false);
+            this.add(comboarbitre);
+            this.revalidate();
+            fenetre.pack();
+            this.setVisible(true);
+            */
+            
+            // TEST 4
+            
+            /*for (int i=0;i<nbrarbitre;i++){
+                Checkbox newcheckbox = new Checkbox();
+                newcheckbox.setLabel("checkbox"+i);
+                this.add(newcheckbox);
+            }*/
+            setTexts();
             }
-        this.repaint();
-        fenetre.pack();
+        
+        
     }//GEN-LAST:event_jButton3ActionPerformed
-
-    private void jTable1InputMethodTextChanged(java.awt.event.InputMethodEvent evt) {//GEN-FIRST:event_jTable1InputMethodTextChanged
-        // TODO add your handling code here:
-        //jTable1.addRow(new Object[]{"nom",1,"categorie","null"});
-        //Object source = evt.getSource();
-        //JButton btu = panneau2.jButton2;
-        //if (source.equals(btu)){
-            //}
-
-    }//GEN-LAST:event_jTable1InputMethodTextChanged
     
+    private void setTexts() {
+        Arbitre tmp;
+        tmp = listeArbitreLigne.get(index);
+        jTextField1.setText(String.valueOf((tmp.getid())));
+    }
+    private static int index = 0;
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

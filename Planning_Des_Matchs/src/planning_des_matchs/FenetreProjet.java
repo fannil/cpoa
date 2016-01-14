@@ -1,7 +1,10 @@
 package planning_des_matchs;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import planning.metier.Match;
 
 public class FenetreProjet extends JFrame{
     private JPanel PanneauAccueil;
