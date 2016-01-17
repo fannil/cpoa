@@ -12,8 +12,9 @@ public class Match {
     public String nom_court;
     public List<Integer> listearbitre;
     public List<Integer> listeramasseur;
+    public List<Integer> listejoueur;
     
-    public Match(int id_match,String date,String heure,String type,String nom_court,List<Integer> listearbitre,List<Integer> listeramasseur) {
+    public Match(int id_match,String date,String heure,String type,String nom_court,List<Integer> listearbitre,List<Integer> listeramasseur,List<Integer> listejoueur) {
         this.id_match=id_match;
         this.date=date;
         this.heure=heure;
@@ -21,6 +22,7 @@ public class Match {
         this.nom_court=nom_court;
         this.listearbitre=listearbitre;
         this.listeramasseur=listeramasseur;
+        this.listejoueur=listejoueur;
     }
 
     public int getId() {
@@ -77,6 +79,14 @@ public class Match {
 
     public void setListeramasseur(List<Integer> listeramasseur) {
         this.listeramasseur = listeramasseur;
+    }
+    
+    public List<Integer> getListejoueur() {
+        return listejoueur;
+    }
+
+    public void setListejoueur(List<Integer> listejoueur) {
+        this.listejoueur = listejoueur;
     }
 
 }

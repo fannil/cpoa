@@ -12,8 +12,12 @@ public class PanneauInserer extends javax.swing.JPanel {
     private final FenetreProjet fenetre;
     public static List liste1 = new ArrayList<>();
     public static List liste2 = new ArrayList<>();
+    public static List liste3 = new ArrayList<>();
     
-    public static Match inserermatch = new Match(0,"Jeudi 1","8H","a","a",liste1,liste2);
+    public static String newdate;
+    public static String newheure;
+    
+    public static Match inserermatch = new Match(0,"Jeudi 1","8H","a","a",liste1,liste2,liste3);
     public PanneauInserer(FenetreProjet fenetre) {
         this.fenetre = fenetre;
         
@@ -108,7 +112,7 @@ public class PanneauInserer extends javax.swing.JPanel {
         if (source.equals(this.jButton1)) {
             inserermatch.date = newdate;
             inserermatch.heure = newheure;
-            System.out.println("Match prévu le " + newdate + " à " + newheure);
+            System.out.println("Match prévu le " + inserermatch.getDate() + " à " + inserermatch.getHeure());
             JPanel panneau = new PanneauInserer2(fenetre);
             this.fenetre.changerPanneau(panneau);
         }
@@ -121,8 +125,7 @@ public class PanneauInserer extends javax.swing.JPanel {
             
         }
     }//GEN-LAST:event_jButton2ActionPerformed
-public static String newdate;
-public static String newheure;
+
     private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
         JComboBox cb = (JComboBox)evt.getSource();
         newdate = (String)cb.getSelectedItem();

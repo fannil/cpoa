@@ -1,11 +1,23 @@
 package planning_des_matchs;
 
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import planning.metier.Arbitre;
 
 public class PanneauInserer4 extends javax.swing.JPanel {
     private final FenetreProjet fenetre;
+    private static List<Arbitre> listeArbitreFilet;
+    public static List listefiletchoisi = new ArrayList();
+    private static String nom,categorie;
+    private static int id,index;
+    private static boolean choix;
+    
     public PanneauInserer4(FenetreProjet fenetre) {
         this.fenetre = fenetre;
+        listeArbitreFilet = TestProjet.listeArbitreFilet;
         initComponents();
     }
 
@@ -34,6 +46,66 @@ public class PanneauInserer4 extends javax.swing.JPanel {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        Object[] columnNames = {"Nom", "ID", "Catégorie", "Boolean"};
+        Object[][] data = {
+            {"", 1,"", false},
+            {"", 2, "", true},
+            {"", 3, "",true},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 4, "", false},
+            {"", 0, "", false},
+            {"", 0, "", false},
+
+        };
+        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+        jTable1 = new JTable(model) {
+
+            @Override
+            public Class getColumnClass(int column) {
+                switch (column) {
+                    case 0:
+                    return String.class;
+                    case 1:
+                    return Integer.class;
+                    case 2:
+                    return String.class;
+                    default:
+                    return Boolean.class;
+                }
+            }
+        };
+        index=0;
+        for (int i=0;i<listeArbitreFilet.size();i++){
+            Arbitre tmp;
+            tmp = TestProjet.listeArbitreFilet.get(index);
+            nom = String.valueOf(tmp.getnom());
+            id = Integer.valueOf(tmp.getid());
+            choix = false;
+            categorie = String.valueOf(tmp.getcategorie());
+            jTable1.setValueAt(nom,i,0);
+            jTable1.setValueAt(id,i,1);
+            jTable1.setValueAt(categorie,i,2);
+            jTable1.setValueAt(choix,i,3);
+            index = index+1;
+        }
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Précédent");
@@ -86,7 +158,19 @@ public class PanneauInserer4 extends javax.swing.JPanel {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         Object source = evt.getSource();
-        if (source.equals(this.jButton1)) {
+        if (source.equals(this.jButton2)) {
+            for (int i=0;i<listeArbitreFilet.size();i++){
+                boolean isChecked = (Boolean) jTable1.getValueAt(i,3);
+                Boolean newliste;
+                Object id = jTable1.getValueAt(i,1);
+                    if (isChecked ){
+                        newliste = listefiletchoisi.add(id);
+                        }
+                }            
+            PanneauInserer3.listelignechoisi.addAll(listefiletchoisi);
+            PanneauInserer.inserermatch.listearbitre = PanneauInserer3.listelignechoisi;
+            System.out.println("Liste ID arbitre ligne + filet choisi " + PanneauInserer.inserermatch.getListearbitre());
+            listefiletchoisi.clear();
             JPanel panneau = new PanneauInserer5(fenetre);
             this.fenetre.changerPanneau(panneau);
         }
@@ -95,6 +179,9 @@ public class PanneauInserer4 extends javax.swing.JPanel {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         Object source = evt.getSource();
         if (source.equals(this.jButton1)) {
+            //PanneauInserer3.listelignechoisi.removeAll(listefiletchoisi);
+            //PanneauInserer.inserermatch.listearbitre = PanneauInserer3.listelignechoisi;
+            System.out.println("Liste ID arbitre ligne + filet choisi " + PanneauInserer.inserermatch.getListearbitre());
             JPanel panneau = new PanneauInserer3(fenetre);
             this.fenetre.changerPanneau(panneau);
         }

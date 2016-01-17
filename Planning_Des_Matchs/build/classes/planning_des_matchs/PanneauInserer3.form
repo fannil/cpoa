@@ -31,25 +31,26 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
-                      <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
+                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
+                              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace min="0" pref="83" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="83" max="-2" attributes="0"/>
-                      <Component id="jButton1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="69" max="-2" attributes="0"/>
-                      <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
-                      <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="50" max="-2" attributes="0"/>
-                      <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane1" pref="0" max="32767" attributes="0"/>
                   </Group>
               </Group>
-              <EmptySpace pref="98" max="32767" attributes="0"/>
+              <EmptySpace max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -58,16 +59,14 @@
           <Group type="102" alignment="0" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
-              <Component id="jTextField1" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="106" max="-2" attributes="0"/>
-              <Component id="jButton3" min="-2" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="16" max="-2" attributes="0"/>
+              <EmptySpace type="separate" max="-2" attributes="0"/>
+              <Component id="jScrollPane1" min="-2" pref="172" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
-              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
+              <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
           </Group>
       </Group>
     </DimensionLayout>
@@ -94,18 +93,24 @@
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Mise &#xe0; jour"/>
-      </Properties>
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton3ActionPerformed"/>
-      </Events>
-    </Component>
-    <Component class="javax.swing.JTextField" name="jTextField1">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="jTextField1"/>
-      </Properties>
-    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane1">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTable" name="jTable1">
+          <Properties>
+            <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="new javax.swing.table.DefaultTableModel(&#xa;    new Object [][] {&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null},&#xa;        {null, null, null, null}&#xa;    },&#xa;    new String [] {&#xa;        &quot;Title 1&quot;, &quot;Title 2&quot;, &quot;Title 3&quot;, &quot;Title 4&quot;&#xa;    }&#xa;)" type="code"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_InitCodePost" type="java.lang.String" value="Object[] columnNames = {&quot;Nom&quot;, &quot;ID&quot;, &quot;Cat&#xe9;gorie&quot;, &quot;Boolean&quot;};&#xa;Object[][] data = {&#xa;                {&quot;&quot;, 1,&quot;&quot;, false},&#xa;                {&quot;&quot;, 2, &quot;&quot;, true},&#xa;                {&quot;&quot;, 3, &quot;&quot;,true},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 4, &quot;&quot;, false},&#xa;                {&quot;&quot;, 0, &quot;&quot;, false},&#xa;                {&quot;&quot;, 0, &quot;&quot;, false},&#xa;                &#xa;            };&#xa;DefaultTableModel model = new DefaultTableModel(data, columnNames);&#xa;    jTable1 = new JTable(model) {&#xa;    @Override&#xa;    public Class getColumnClass(int column) {&#xa;        switch (column) {&#xa;            case 0:&#xa;                return String.class;&#xa;            case 1:&#xa;                return Integer.class;&#xa;            case 2:&#xa;                return String.class;&#xa;            default:&#xa;                return Boolean.class;&#xa;            }&#xa;        }&#xa;    };&#xa;index=0;&#xa;for (int i=0;i&lt;listeArbitreLigne.size();i++){&#xa;    Arbitre tmp;&#xa;    tmp = TestProjet.listeArbitreLigne.get(index);&#xa;    nom = String.valueOf(tmp.getnom());&#xa;    id = Integer.valueOf(tmp.getid());&#xa;    categorie = String.valueOf(tmp.getcategorie());&#xa;    jTable1.setValueAt(nom,i,0);&#xa;    jTable1.setValueAt(id,i,1);&#xa;    jTable1.setValueAt(categorie,i,2);&#xa;    jTable1.setValueAt(choix,i,3);&#xa;    index = index+1;&#xa;}"/>
+          </AuxValues>
+        </Component>
+      </SubComponents>
+    </Container>
   </SubComponents>
 </Form>

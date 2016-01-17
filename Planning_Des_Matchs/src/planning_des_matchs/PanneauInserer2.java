@@ -111,13 +111,11 @@ String newtype;
     private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
         JRadioButton cb = (JRadioButton)evt.getSource();
         newtype = "Simple";
-        System.out.println(newtype);
     }//GEN-LAST:event_jRadioButton1ActionPerformed
 String newcourt;
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         JComboBox cb = (JComboBox)evt.getSource();
         newcourt = (String)cb.getSelectedItem();
-        System.out.println(newcourt);
     }//GEN-LAST:event_jComboBox1ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
@@ -133,8 +131,7 @@ String newcourt;
         if (source.equals(this.jButton2)) {
             PanneauInserer.inserermatch.type = newtype;
             PanneauInserer.inserermatch.nom_court = newcourt;
-            System.out.println("Match prévu le " + PanneauInserer.newdate + " à " + PanneauInserer.newheure);
-            System.out.println("Match de type " + newtype + " sur le " + newcourt);
+            System.out.println("Match de type " + PanneauInserer.inserermatch.getType() + " sur le " + PanneauInserer.inserermatch.getNom_court());
             JPanel panneau = new PanneauInserer3(fenetre);
             this.fenetre.changerPanneau(panneau);
         }
@@ -143,7 +140,6 @@ String newcourt;
     private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
         JRadioButton cb = (JRadioButton)evt.getSource();
         newtype = "Double";
-        System.out.println(newtype);
     }//GEN-LAST:event_jRadioButton2ActionPerformed
     
 

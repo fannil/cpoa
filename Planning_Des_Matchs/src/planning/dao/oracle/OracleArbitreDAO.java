@@ -15,8 +15,6 @@ import planning.metier.Arbitre;
 public class OracleArbitreDAO implements IArbitreDAO {
     private static DataSource ds;
     private static Connection connexionBD;
-    private static ResultSet rset;
-     private static Statement stmt;
     
     @Override
     public void setDataSource(DataSource ds) {
@@ -39,13 +37,13 @@ public class OracleArbitreDAO implements IArbitreDAO {
     
     @Override
     public List<Arbitre> getArbitreLigne() /*throws DAOException*/{
-        rset = null;
-        stmt = null;
+        ResultSet rset = null;
+        Statement stmt = null;
         List<Arbitre> listeArbitreLigne = null;
         try{
             stmt = connexionBD.createStatement();
             listeArbitreLigne = new ArrayList<>();
-            rset = stmt.executeQuery("SELECT * from ARBITRE where poste='ligne'");
+            rset = stmt.executeQuery("select * from arbitre where poste='ligne'");
             while(rset.next()){
                 Arbitre a = new Arbitre(rset.getInt(1),rset.getString(2),rset.getString(3),rset.getString(4));
                 listeArbitreLigne.add(a);
@@ -54,20 +52,21 @@ public class OracleArbitreDAO implements IArbitreDAO {
         catch (SQLException exc){
             Logger.getLogger(OracleArbitreDAO.class.getName()).log(Level.SEVERE,null,exc);
         }
-        finally {
-            try{
-                stmt.close();
-                rset.close();
-                closeConnection(connexionBD);
-                System.out.println("connexion fermee");
-            }
-            catch (SQLException ex){
-                Logger.getLogger(OracleArbitreDAO.class.getName()).log(Level.SEVERE,null,ex);
-                
-            }
-        }
+        //finally {
+        //    try{
+        //        stmt.close();
+        //        rset.close();
+        //        closeConnection(connexionBD);
+         //       System.out.println("connexion fermee");
+        //    }
+         //   catch (SQLException ex){
+         //       Logger.getLogger(OracleArbitreDAO.class.getName()).log(Level.SEVERE,null,ex);
+         //   }
+        //}
         return listeArbitreLigne;
     }
+    
+    
     
     @Override
     public List<Arbitre> getArbitreFilet() /*throws DAOException*/{
@@ -77,32 +76,32 @@ public class OracleArbitreDAO implements IArbitreDAO {
         try{
             stmt = connexionBD.createStatement();
             listeArbitreFilet = new ArrayList<>();
-            rset = stmt.executeQuery("SELECT * from ARBITRE where poste='filet'");
+            rset = stmt.executeQuery("select * from arbitre where poste='filet'");
             while(rset.next()){
-                Arbitre a = new Arbitre(rset.getInt(1),rset.getString(2),rset.getString(2),rset.getString(2));
+                Arbitre a = new Arbitre(rset.getInt(1),rset.getString(2),rset.getString(3),rset.getString(4));
                 listeArbitreFilet.add(a);
             }
         }
         catch (SQLException exc){
             Logger.getLogger(OracleArbitreDAO.class.getName()).log(Level.SEVERE,null,exc);
         }
-        finally {
-            try{
-                stmt.close();
-                rset.close();
-                closeConnection(connexionBD);
-                System.out.println("connexion fermee");
-            }
-            catch (SQLException ex){
-                Logger.getLogger(OracleArbitreDAO.class.getName()).log(Level.SEVERE,null,ex);
-                
-            }
-        }
+        //finally {
+           // try{
+                //stmt.close();
+                //rset.close();
+                //closeConnection(connexionBD);
+                //System.out.println("connexion fermee");
+            //}
+            //catch (SQLException ex){
+                //Logger.getLogger(OracleArbitreDAO.class.getName()).log(Level.SEVERE,null,ex);
+            //}
+        //}
         return listeArbitreFilet;
     }
     
+    
     @Override
-    public List<Arbitre> getArbitreChaise() /*throws DAOException*/{
+    public List<Arbitre> getArbitreChaise() {
         ResultSet rset = null;
         Statement stmt = null;
         List<Arbitre> listeArbitreChaise = null;
@@ -111,25 +110,25 @@ public class OracleArbitreDAO implements IArbitreDAO {
             listeArbitreChaise = new ArrayList<>();
             rset = stmt.executeQuery("SELECT * from ARBITRE where poste='chaise'");
             while(rset.next()){
-                Arbitre a = new Arbitre(rset.getInt(1),rset.getString(2),rset.getString(2),rset.getString(2));
+                Arbitre a = new Arbitre(rset.getInt(1),rset.getString(2),rset.getString(3),rset.getString(4));
                 listeArbitreChaise.add(a);
             }
         }
         catch (SQLException exc){
             Logger.getLogger(OracleArbitreDAO.class.getName()).log(Level.SEVERE,null,exc);
         }
-        finally {
-            try{
-                stmt.close();
-                rset.close();
-                closeConnection(connexionBD);
-                System.out.println("connexion fermee");
-            }
-            catch (SQLException ex){
-                Logger.getLogger(OracleArbitreDAO.class.getName()).log(Level.SEVERE,null,ex);
+        //finally {
+        //    try{
+        //        stmt.close();
+        //        rset.close();
+        //        closeConnection(connexionBD);
+        //        System.out.println("connexion fermee");
+        //    }
+         //   catch (SQLException ex){
+         //       Logger.getLogger(OracleArbitreDAO.class.getName()).log(Level.SEVERE,null,ex);
                 
-            }
-        }
+         //   }
+        //}
         return listeArbitreChaise;
     }
 }

@@ -4,11 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import planning.dao.IArbitreDAO;
+import planning.metier.Arbitre;
 import planning.metier.Match;
+
 
 public class FenetreProjet extends JFrame{
     private JPanel PanneauAccueil;
+    
     public FenetreProjet () {
+        
         super();
         this.setTitle("Planning des matchs");
         this.setSize(400, 300);
