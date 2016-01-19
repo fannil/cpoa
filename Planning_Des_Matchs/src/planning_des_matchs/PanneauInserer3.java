@@ -124,10 +124,12 @@ public class PanneauInserer3 extends javax.swing.JPanel {
         index=0;
         for (int i=0;i<listeArbitreLigne.size();i++){
             Arbitre tmp;
+
             tmp = TestProjet.listeArbitreLigne.get(index);
             nom = String.valueOf(tmp.getnom());
             id = Integer.valueOf(tmp.getid());
             categorie = String.valueOf(tmp.getcategorie());
+
             jTable1.setValueAt(nom,i,0);
             jTable1.setValueAt(id,i,1);
             jTable1.setValueAt(categorie,i,2);
@@ -188,16 +190,13 @@ public class PanneauInserer3 extends javax.swing.JPanel {
                 boolean isChecked = (Boolean) jTable1.getValueAt(i,3);
                 Boolean newliste;
                 Object id = jTable1.getValueAt(i,1);
-                //for (int j=0;j<listearbitre;j++){
                     if (isChecked){
                         jTable1.setValueAt(true,i,3);
                         newliste = listelignechoisi.add(id);
                         }
                 }
-            //}
             PanneauInserer.inserermatch.listearbitre = listelignechoisi;
             System.out.println("Liste ID arbitre choisi " + PanneauInserer.inserermatch.getListearbitre());
-            //listelignechoisi.clear();
             JPanel panneau = new PanneauInserer4(fenetre);
             this.fenetre.changerPanneau(panneau);
         }

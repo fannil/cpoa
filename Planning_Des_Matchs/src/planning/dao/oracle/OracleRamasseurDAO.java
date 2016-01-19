@@ -1,6 +1,7 @@
 package planning.dao.oracle;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -10,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.sql.DataSource;
 import planning.dao.IRamasseurDAO;
+import planning.metier.Arbitre;
 import planning.metier.Ramasseur;
 
 public class OracleRamasseurDAO implements IRamasseurDAO {
@@ -45,7 +47,7 @@ public class OracleRamasseurDAO implements IRamasseurDAO {
             listeRamasseurE1 = new ArrayList<>();
             rset = stmt.executeQuery("select * from RAMASSEUR where NUM_EQUIPE=1");
             while(rset.next()){
-                Ramasseur r = new Ramasseur(rset.getInt(1),rset.getInt(2));
+                Ramasseur r = new Ramasseur(rset.getInt(1),rset.getInt(2),rset.getString(3));
                 listeRamasseurE1.add(r);
             }
         }
@@ -76,7 +78,7 @@ public class OracleRamasseurDAO implements IRamasseurDAO {
             listeRamasseurE2 = new ArrayList<>();
             rset = stmt.executeQuery("select * from RAMASSEUR where NUM_EQUIPE=2");
             while(rset.next()){
-                Ramasseur r = new Ramasseur(rset.getInt(1),rset.getInt(2));
+                Ramasseur r = new Ramasseur(rset.getInt(1),rset.getInt(2),rset.getString(3));
                 listeRamasseurE2.add(r);
             }
         }
@@ -95,5 +97,36 @@ public class OracleRamasseurDAO implements IRamasseurDAO {
         //    }
         //}
         return listeRamasseurE2;
+    }
+    
+    @Override 
+    public Ramasseur getRamasseur(int i) /*throws DAOException*/{
+        ResultSet rset = null;
+        PreparedStatement stmt = null;
+        Ramasseur ramasseur = null;
+        try{
+            stmt = connexionBD.prepareStatement("select * from ramasseur where id_ramasseur= ? ");
+            stmt.setInt(1,i);
+            rset = stmt.executeQuery();
+            while (rset.next()){
+                ramasseur = new Ramasseur(rset.getInt(1),rset.getInt(2),rset.getString(3));
+            }
+            //return arbitre;
+        }
+        catch (SQLException exc){
+            Logger.getLogger(OracleArbitreDAO.class.getName()).log(Level.SEVERE,null,exc);
+        }
+        //finally {
+        //    try{
+        //        stmt.close();
+        //        rset.close();
+        //        closeConnection(connexionBD);
+         //       System.out.println("connexion fermee");
+        //    }
+         //   catch (SQLException ex){
+         //       Logger.getLogger(OracleArbitreDAO.class.getName()).log(Level.SEVERE,null,ex);
+         //   }
+        //}
+        return ramasseur;
     }
 }

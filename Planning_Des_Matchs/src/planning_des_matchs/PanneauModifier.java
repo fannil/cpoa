@@ -1,9 +1,16 @@
 package planning_des_matchs;
 
+import java.util.List;
 import javax.swing.JPanel;
+import javax.swing.JTable;
+import javax.swing.table.DefaultTableModel;
+import planning.metier.Match;
 
 public class PanneauModifier extends javax.swing.JPanel {
     private final FenetreProjet fenetre;
+    public static List<Match> listeMatch;
+    public String date,heure,type,court;
+    public int id,index;
     
     public PanneauModifier(FenetreProjet fenetre) {
         this.fenetre = fenetre;
@@ -22,25 +29,57 @@ public class PanneauModifier extends javax.swing.JPanel {
 
         jLabel1.setText("Liste des matchs prévus");
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Date", "Horaire", "Choix"
+        /*Object[] columnNames = {"ID", "Date", "Heure", "Type","Court","Arbitre","Ramasseurs","Joueur","Choix"};
+        Object[][] data = {
+            {null, "", "", "", "", "", "", "", false},
+            {null, "", "", "", "", "", "", "", false},
+            {null, "", "", "", "", "", "", "", false},
+            {null, "", "", "", "", "", "", "", false},
+            {null, "", "", "", "", "", "", "", false},
+        };
+        DefaultTableModel model = new DefaultTableModel(data, columnNames);
+        jTable1 = new JTable(model) {
+            @Override
+            public Class getColumnClass(int column) {
+                switch (column) {
+                    case 0:
+                    return Integer.class;
+                    case 1:
+                    return String.class;
+                    case 2:
+                    return String.class;
+                    case 3:
+                    return String.class;
+                    case 4:
+                    return String.class;
+                    case 5:
+                    return String.class;
+                    case 6:
+                    return String.class;
+                    case 7:
+                    return String.class;
+                    default:
+                    return Boolean.class;
+                }
             }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
-            };
+        };
+        index=0;
+        for (int i=0;i<listeMatch.size();i++){
+            Match tmp;
+            tmp = TestProjet.listeMatch.get(index);
 
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-        });
+            id = Integer.valueOf(tmp.getId());
+            date = String.valueOf(tmp.getDate());
+            heure = String.valueOf(tmp.getHeure());
+            type = String.valueOf(tmp.getType());
+
+            jTable1.setValueAt(id,i,0);
+            jTable1.setValueAt(date,i,1);
+            jTable1.setValueAt(heure,i,2);
+            jTable1.setValueAt(type,i,3);
+
+            index = index+1;
+        }*/
         jScrollPane1.setViewportView(jTable1);
 
         jButton1.setText("Précédent");

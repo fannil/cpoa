@@ -13,4 +13,6 @@ public interface IRamasseurDAO {
     
     public List<Ramasseur> getRamasseurE1();
     public List<Ramasseur> getRamasseurE2();
+    
+    public Ramasseur getRamasseur(int i);
 }

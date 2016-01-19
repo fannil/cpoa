@@ -12,4 +12,5 @@ public interface IJoueurDAO {
     public void closeConnection(Connection c)throws SQLException;
     
     public List<Joueur> getJoueur();
+    public Joueur getJoueur(int i);
 }

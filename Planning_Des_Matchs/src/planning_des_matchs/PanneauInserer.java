@@ -60,7 +60,7 @@ public class PanneauInserer extends javax.swing.JPanel {
             }
         });
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Samedi 15", "Dimanche 16", "Lundi 17", "Mardi 18", "Mercredi 19", "Jeudi 20", "Vendredi 21", "Samedi 22", "Dimanche 23" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Date", "Samedi 15", "Dimanche 16", "Lundi 17", "Mardi 18", "Mercredi 19", "Jeudi 20", "Vendredi 21", "Samedi 22", "Dimanche 23" }));
         jComboBox2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBox2ActionPerformed(evt);
@@ -122,7 +122,6 @@ public class PanneauInserer extends javax.swing.JPanel {
         Object source = evt.getSource();
         if (source.equals(this.jButton2)) {
             this.fenetre.retourAccueil();
-            
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
